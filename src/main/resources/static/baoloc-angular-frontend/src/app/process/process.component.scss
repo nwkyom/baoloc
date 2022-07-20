@@ -11,9 +11,21 @@
 
   .process-actions-container {
     min-width: 400px;
+    width: 40vw;
 
-    mat-form-field, button, .permutations-container {
+    .sub-header {
+      color: rgba(0,0,0,.54);
+    }
+
+    mat-form-field, button {
       width: 100%
+    }
+
+    .permutations-container  {
+      mat-list {
+        max-height: 35vh;
+        overflow-y: auto;
+      }
     }
   }
 }

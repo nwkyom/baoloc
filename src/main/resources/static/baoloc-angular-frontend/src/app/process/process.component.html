@@ -40,11 +40,12 @@
       </button>
     </div>
 
-    <div *ngIf="result" class="results-container">
+    <div *ngIf="result" class="permutations-container">
+      <div class="sub-header">
+        {{ result?.permutations?.length || 0 }} permutation(s) valide(s)
+        trouvées en {{ result.duration }}ms. :
+      </div>
       <mat-list>
-        <div mat-subheader>
-          {{ result?.permutations?.length || 0 }} permutation(s) valide(s):
-        </div>
         <mat-list-item *ngFor="let perm of result?.permutations">
           <div mat-line>{{ perm.numbers }}</div>
         </mat-list-item>

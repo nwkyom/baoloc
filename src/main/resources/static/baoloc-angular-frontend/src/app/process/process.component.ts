@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Result } from 'src/app/results-table/results-table.component';
+import {
+  Permutation,
+  Result,
+} from 'src/app/results-table/results-table.component';
 import { ApiService } from 'src/app/api.service';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -14,6 +17,7 @@ export class ProcessComponent implements OnInit {
     Validators.maxLength(3),
   ]);
   result!: Result;
+  sortedPermutations!: Permutation[];
 
   constructor(private _apiService: ApiService) {}
 
@@ -21,9 +25,10 @@ export class ProcessComponent implements OnInit {
 
   processCustomResult() {
     if (this.customResult.valid) {
-      this._apiService
-        .process(this.customResult.value)
-        .subscribe((result) => (this.result = result));
+      this._apiService.process(this.customResult.value).subscribe((result) => {
+        this.result = result;
+        this.sortedPermutations = this.result.permutations.sort();
+      });
     }
   }
 }
