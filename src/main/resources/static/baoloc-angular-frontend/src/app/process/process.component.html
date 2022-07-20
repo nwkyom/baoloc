@@ -1,0 +1,39 @@
+<div class="process-container">
+  <h2>
+    Le résultat attendu dans la formule initiale du problème de Bao Loc est
+    <b>66</b>. Ici, vous pouvez afficher les permutations valides pour le
+    résultat que vous aurez choisi. Ces permutations seront automatiquement
+    stockées dans notre base de données, ou récupéréees de cette dernière, si
+    elles ont déjà été calculées.
+  </h2>
+
+  <mat-form-field hintLabel="Max 3 characters" appearance="fill">
+    <mat-label>Enter a custom expected result (default: 66)</mat-label>
+    <input
+      matInput
+      #input
+      maxlength="3"
+      placeholder="Ex. 66"
+      [value]="customResult"
+    />
+    <mat-hint align="end">{{ input.value?.length || 0 }}/3</mat-hint>
+  </mat-form-field>
+
+  <div>
+    <button mat-flat-button [disabled]="!customResult">
+      Launch the algorithm resolver
+    </button>
+  </div>
+
+  <div class="results-container">
+    <mat-list>
+      <div mat-subheader>
+        {{ result?.permutations?.length }} permutations valides:
+      </div>
+      <mat-list-item *ngFor="let perm of result?.permutations">
+        <div mat-line>{{ perm.numbers }}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+</div>

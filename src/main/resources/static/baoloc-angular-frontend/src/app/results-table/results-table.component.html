@@ -1,0 +1,69 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Results">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+    </ng-container>
+
+    <!-- Expected result Column -->
+    <ng-container matColumnDef="expectedResult">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Expected Result</th>
+      <td mat-cell *matCellDef="let row">{{ row.expectedResult }}</td>
+    </ng-container>
+
+    <!-- Duration of resolver processing Column -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration (ms)</th>
+      <td mat-cell *matCellDef="let row">{{ row.duration }}</td>
+    </ng-container>
+
+    <!-- Expected result Column -->
+    <ng-container matColumnDef="nbPermutations">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nb permutations</th>
+      <td mat-cell *matCellDef="let row">{{ row.permutations.length }}</td>
+    </ng-container>
+
+    <!-- Permutations Column -->
+    <ng-container matColumnDef="permutations">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Permutations</th>
+      <td mat-cell *matCellDef="let row">
+        {{ formatPermutationsNumbers(row.permutations) }}
+      </td>
+    </ng-container>
+
+    <!-- Actions column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let row" style="width: 80px">
+        <!-- <button
+          mat-icon-button
+          (click)="openEditDialog(row)"
+          matToolTip="Editer"
+        >
+          <mat-icon>edit</mat-icon>
+        </button> -->
+        <button
+          mat-icon-button
+          (click)="deleteResult(row)"
+          matToolTip="Supprimer"
+        >
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    #paginator
+    [length]="dataSource?.data?.length"
+    [pageIndex]="0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
