@@ -32,7 +32,7 @@ public class BaolocController {
     }
 
     @PostMapping("/process")
-    public ResponseEntity<Result> process(@RequestBody int expectedResult) {
+    public ResponseEntity<Result> process(@RequestBody Integer expectedResult) {
         return ResponseEntity.ok(this.resultService.retrieveOrProcess(expectedResult));
     }
 

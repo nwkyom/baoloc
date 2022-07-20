@@ -39,17 +39,17 @@
         Launch the algorithm resolver
       </button>
     </div>
-  </div>
 
-  <div *ngIf="result" class="results-container">
-    <mat-list>
-      <div mat-subheader>
-        {{ result?.permutations?.length }} permutations valides:
-      </div>
-      <mat-list-item *ngFor="let perm of result?.permutations">
-        <div mat-line>{{ perm.numbers }}</div>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-    </mat-list>
+    <div *ngIf="result" class="results-container">
+      <mat-list>
+        <div mat-subheader>
+          {{ result?.permutations?.length || 0 }} permutation(s) valide(s):
+        </div>
+        <mat-list-item *ngFor="let perm of result?.permutations">
+          <div mat-line>{{ perm.numbers }}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </div>
   </div>
 </div>

@@ -36,7 +36,7 @@ public class Result {
     /**
      * Duration in milliseconds of the problem's resolution.
      */
-    @Column(name = "duration", unique = true, nullable = false)
+    @Column(name = "duration", nullable = false)
     private Long duration;
 
     @ManyToMany(fetch = FetchType.EAGER)
