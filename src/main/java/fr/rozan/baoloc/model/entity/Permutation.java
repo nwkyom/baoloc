@@ -1,9 +1,36 @@
 package fr.rozan.baoloc.model.entity;
 
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
-public class Permutation<T> {
+import javax.persistence.*;
+import java.util.Set;
 
-    List<T> values;
+@Entity
+@Table(name = "permutation")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(exclude = { "results"})
+@ToString(exclude = { "results"})
+@Builder
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "results" })
+public class Permutation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    /**
+     * Values of the current permutation, formatted as following:
+     * val1,val2...,valn
+     * Each permutation found by the algorithm will be stored only once
+     * and will be easily comparable.
+     */
+    @Column(name = "numbers", unique = true, nullable = false)
+    private String numbers;
+
+    @ManyToMany(mappedBy = "permutations")
+    private Set<Result> results;
 }

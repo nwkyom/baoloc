@@ -15,7 +15,6 @@ import java.util.stream.IntStream;
  * Equations to resolve:
  * var1 + (13 * var2) / var3 + var4 + (12 * var5) - var6 - 11 + (var7 * var8) / var9 - 10 = 66
  * or var1 + (13 * var2) / var3 + var4 + (12 * var5) - var6 + (var7 * var8) / var9 = 87
- * or a + d – f + (13b/c) + 12e + (gh/i) = 87
  */
 @Log4j2
 @Data
@@ -23,6 +22,11 @@ import java.util.stream.IntStream;
 public class BaolocResolver {
 
     private int expectedResult = 66;
+
+    /**
+     * Duration in milliseconds of the last resolver execution.
+     */
+    private long duration;
 
     private static final List<Integer> inputNumbers = IntStream.range(1,10).boxed().toList();
 
@@ -36,7 +40,8 @@ public class BaolocResolver {
                 matchingPermutations.add(list);
             }
         });
-        log.info("{} matching permutations have been found for expected result {} in {}ms.", matchingPermutations.size(), this.getExpectedResult(), (System.currentTimeMillis() -start));
+        this.duration = System.currentTimeMillis() - start;
+        log.info("{} matching permutations have been found for expected result {} in {}ms.", matchingPermutations.size(), this.getExpectedResult(), this.duration);
         return matchingPermutations;
     }
 }

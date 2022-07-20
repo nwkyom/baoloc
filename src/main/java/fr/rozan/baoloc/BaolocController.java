@@ -4,11 +4,9 @@ import fr.rozan.baoloc.model.entity.Result;
 import fr.rozan.baoloc.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -31,5 +29,17 @@ public class BaolocController {
     @GetMapping("/resultByExpectedResult")
     public ResponseEntity<Result> getResultByExpectedResult(@RequestParam int expectedResult) {
         return ResponseEntity.ok(this.resultService.getResultByExpectedResult(expectedResult));
+    }
+
+    @PostMapping("/process")
+    public ResponseEntity<Result> process(@RequestBody int expectedResult) {
+        return ResponseEntity.ok(this.resultService.retrieveOrProcess(expectedResult));
+    }
+
+
+    @DeleteMapping("/results/{resultId}")
+    public ResponseEntity<String> deleteResult(@PathVariable long resultId) {
+        this.resultService.deleteResultById(resultId);
+        return ResponseEntity.ok("Result with ID = {} has been successfully deleted.");
     }
 }

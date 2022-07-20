@@ -8,7 +8,6 @@
 		<version>2.7.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
 	<groupId>fr.rozan</groupId>
 	<artifactId>baoloc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -19,7 +18,6 @@
 		<java.version>17</java.version>
 		<guava.version>31.1-jre</guava.version>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -61,9 +59,7 @@
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
-
 	</dependencies>
-
 	<build>
 		<resources>
 			<resource>
@@ -86,14 +82,6 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
-
 </project>
