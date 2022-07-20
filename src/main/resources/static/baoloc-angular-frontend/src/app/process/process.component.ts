@@ -16,6 +16,10 @@ export class ProcessComponent implements OnInit {
   ngOnInit(): void {}
 
   processCustomResult() {
-    this._apiService.process(this.customResult);
+    if (this.customResult) {
+      this._apiService
+        .process(this.customResult)
+        .subscribe((result) => (this.result = result));
+    }
   }
 }

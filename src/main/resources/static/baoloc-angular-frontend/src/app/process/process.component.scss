@@ -4,4 +4,16 @@
   align-items: center;
   justify-content: center;
   align-content: center;
+
+  div {
+    margin: 1em;
+  }
+
+  .process-actions-container {
+    min-width: 400px;
+
+    mat-form-field, button {
+      width: 100%
+    }
+  }
 }
