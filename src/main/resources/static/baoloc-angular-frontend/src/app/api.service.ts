@@ -27,9 +27,10 @@ export class ApiService {
   }
 
   process(customResult: number): Observable<Result> {
-    const params = { expectedResult: customResult };
     return this.http
-      .get<Result>(this.apiUrl.concat('/process'), { params })
+      .post<Result>(this.apiUrl.concat('/process'), {
+        expectedResult: customResult,
+      })
       .pipe(catchError(this.handleError));
   }
 
