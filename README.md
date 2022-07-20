@@ -42,3 +42,8 @@ Ensuite, pour lancer le front en mode "dev", exécuter la commande :
 
 Le client est accessible à l'url :
 http://localhost:4200
+
+## Accéder à la console H2
+
+Via l'url: http://localhost:8080/h2-console
+(credentials dans le fichier **application.properties**)
