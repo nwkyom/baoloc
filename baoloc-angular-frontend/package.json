@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy-locally": "cp -r ./dist/baoloc-angular-frontend/* ../src/main/resources/static/"
+    "deploy:locally": "cp -r ./dist/baoloc-angular-frontend/* ../src/main/resources/static/"
   },
   "private": true,
   "dependencies": {
